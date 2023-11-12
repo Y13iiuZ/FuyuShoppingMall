@@ -1,0 +1,273 @@
+.App {
+  text-align: center;
+  .head {
+    background-image: url("../public/background.gif");
+    background-size: cover;
+    height: 115vh;
+    text-align: left;
+    img {
+      margin-top: -65px;
+    }
+  }
+  .App-logo {
+    pointer-events: none;
+    border-radius: 2rem;
+  }
+  .navbar {
+    padding-top: 20px;
+  }
+  .navbar-nav {
+    box-shadow: 14px 9px 11px 0px rgba(0, 0, 0, 0.75);
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    padding-left: 100px;
+    .anticon svg {
+      width: 10px;
+      height: 10px;
+    }
+    li {
+      padding-left: 2rem;
+      padding-top: 0.3rem;
+    }
+    a {
+      color: #fff;
+    }
+    a:hover,
+    a:active {
+      color: #c04851;
+    }
+    .head-right {
+      position: absolute;
+      color: transparent;
+      right: 10px;
+      background-image: linear-gradient(45deg, #22c1c3, #c471ed, #fdbb2d);
+      background-size: 200% 200%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      font-family: Verdana, Arial, Helvetica, sans-serif;
+      font-size: 23px;
+      font-weight: bold;
+      overflow: hidden;
+      animation: textChange 4s linear infinite, textScroll 4s infinite linear;
+    }
+  }
+  section {
+    .my-node-enter {
+      opacity: 0;
+    }
+    .my-node-enter-active {
+      opacity: 1;
+      animation: bounce-in 0.5s;
+    }
+    .my-node-exit {
+      opacity: 1;
+    }
+    .my-node-exit-active {
+      opacity: 0;
+      animation: bounce-in 0.5s reverse;
+    }
+    @keyframes bounce-in {
+      0% {
+        transform: scale(0);
+      }
+      50% {
+        transform: scale(1.25);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    .voltage-button {
+      position: relative;
+      margin: 10px 0;
+    }
+
+    .voltage-button button {
+      width: 100%;
+      color: white;
+      background: #0d1127;
+      padding: 1rem 3rem 1rem 3rem;
+      border-radius: 5rem;
+      border: 5px solid #5978f3;
+      font-size: 1.2rem;
+      line-height: 1em;
+      letter-spacing: 0.075em;
+      transition: background 0.3s;
+    }
+
+    .voltage-button button:hover {
+      cursor: pointer;
+      background: #0f1c53;
+    }
+
+    .voltage-button button:hover + svg,
+    .voltage-button button:hover + svg + .dots {
+      opacity: 1;
+    }
+
+    .voltage-button svg {
+      display: block;
+      position: absolute;
+      top: -0.75em;
+      left: -0.25em;
+      width: calc(100% + 0.5em);
+      height: calc(100% + 1.5em);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s;
+      transition-delay: 0.1s;
+    }
+
+    .voltage-button svg path {
+      stroke-dasharray: 100;
+      filter: url("#glow");
+    }
+
+    .voltage-button svg path.line-1 {
+      stroke: #f6de8d;
+      stroke-dashoffset: 0;
+      animation: spark-1 3s linear infinite;
+    }
+
+    .voltage-button svg path.line-2 {
+      stroke: #6bfeff;
+      stroke-dashoffset: 500;
+      animation: spark-2 3s linear infinite;
+    }
+
+    .voltage-button .dots {
+      opacity: 0;
+      transition: opacity 0.3s;
+      transition-delay: 0.4s;
+    }
+
+    .voltage-button .dots .dot {
+      width: 1rem;
+      height: 1rem;
+      background: white;
+      border-radius: 100%;
+      position: absolute;
+      opacity: 0;
+    }
+
+    .voltage-button .dots .dot-1 {
+      top: 0;
+      left: 20%;
+      animation: fly-up 3s linear infinite;
+    }
+
+    .voltage-button .dots .dot-2 {
+      top: 0;
+      left: 55%;
+      animation: fly-up 3s linear infinite;
+      animation-delay: 0.5s;
+    }
+
+    .voltage-button .dots .dot-3 {
+      top: 0;
+      left: 80%;
+      animation: fly-up 3s linear infinite;
+      animation-delay: 1s;
+    }
+
+    .voltage-button .dots .dot-4 {
+      bottom: 0;
+      left: 30%;
+      animation: fly-down 3s linear infinite;
+      animation-delay: 2.5s;
+    }
+
+    .voltage-button .dots .dot-5 {
+      bottom: 0;
+      left: 65%;
+      animation: fly-down 3s linear infinite;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes spark-1 {
+      to {
+        stroke-dashoffset: -1000;
+      }
+    }
+
+    @keyframes spark-2 {
+      to {
+        stroke-dashoffset: -500;
+      }
+    }
+
+    @keyframes fly-up {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.2);
+      }
+
+      5% {
+        opacity: 1;
+        transform: translateY(-1.5rem) scale(0.4);
+      }
+
+      10%,
+      100% {
+        opacity: 0;
+        transform: translateY(-3rem) scale(0.2);
+      }
+    }
+
+    @keyframes fly-down {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.2);
+      }
+
+      5% {
+        opacity: 1;
+        transform: translateY(1.5rem) scale(0.4);
+      }
+
+      10%,
+      100% {
+        opacity: 0;
+        transform: translateY(3rem) scale(0.2);
+      }
+    }
+  }
+}
+
+@keyframes textChange {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@keyframes textScroll {
+  0% {
+    transform: translateX(300px);
+  }
+  100% {
+    transform: translateX(-90%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
