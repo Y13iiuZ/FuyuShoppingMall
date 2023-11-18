@@ -7,7 +7,7 @@ const NotPage: React.FC = () => {
   };
   return (
     <>
-      <h1>主页</h1>
+      <h1>Not Found</h1>
       <button onClick={goBack}>返回</button>
     </>
   );

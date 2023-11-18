@@ -13,6 +13,11 @@
     "@types/react-dom": "^18.2.13",
     "antd": "^5.10.0",
     "lottie-web": "^5.12.2",
+    "mobx": "^6.11.0",
+    "mobx-react": "^9.1.0",
+    "mobx-react-devtools": "^6.1.1",
+    "mobx-react-lite": "^4.0.5",
+    "mockjs": "^1.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^6.16.0",
@@ -42,6 +47,7 @@
     ]
   },
   "devDependencies": {
+    "@types/mockjs": "^1.0.10",
     "@types/react-transition-group": "^4.4.8",
     "@typescript-eslint/eslint-plugin": "^6.7.5",
     "@typescript-eslint/parser": "^6.7.5",
