@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Space } from "antd";
 import { createFromIconfontCN } from "@ant-design/icons";
+import store from "../store/CartStore";
+import { observer } from "mobx-react-lite";
 /* ----------类组件---------- */
 
 // interface CounterState {
@@ -47,7 +49,18 @@ enum Icon {
 }
 const iconValues: string[] = Object.values(Icon); // 将枚举值存储在数组中
 const Counter: React.FC = () => {
+  const {
+    data: { name },
+    changeName,
+  } = store;
+  const [names, setName] = useState(name);
   const [count, setCount] = useState("");
+  useEffect(() => {
+    const savedName = localStorage.getItem("name");
+    if (savedName) {
+      setName(savedName);
+    }
+  }, [name]);
   const handleClick = (): void => {
     const randomValue: number = Math.trunc(Math.random() * iconValues.length);
     setCount(iconValues[randomValue]);
@@ -68,7 +81,11 @@ const Counter: React.FC = () => {
         <IconFont type="icon-shoppingcart" />
         <IconFont type="icon-python" />
       </Space>
+      <div>
+        <p>简易mobx {names}</p>
+        <input onChange={({ target: { value } }) => changeName(value)}></input>
+      </div>
     </div>
   );
 };
-export default Counter;
+export default observer(Counter);

@@ -1,25 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { observer } from "mobx-react-lite";
-import store from "../store/CartStore";
-import ProductList from "./WantMeDo";
+import { CommentOutlined, CustomerServiceOutlined } from "@ant-design/icons";
+import { FloatButton } from "antd";
 import Goods from "./Goods";
 import data from "../mock";
 import "./style/login.scss";
 const Login: React.FC = () => {
-  const {
-    data: { name },
-    changeName,
-  } = store;
-  const [names, setName] = useState(name);
-  console.log(JSON.stringify(data.list, null, 4));
   const getGoodsListData = JSON.parse(JSON.stringify(data.list, null, 4));
-  useEffect(() => {
-    const savedName = localStorage.getItem("name");
-    if (savedName) {
-      setName(savedName);
-    }
-  }, [name]);
+  const memoizedGoods = useMemo(
+    () => <Goods getGoodsListData={getGoodsListData} />,
+    [getGoodsListData]
+  );
   return (
     <div>
       <div style={{ height: "auto" }}>
@@ -28,14 +19,25 @@ const Login: React.FC = () => {
         </Link>
       </div>
       <Outlet />
-      <p>简易mobx {names}</p>
-      <input onChange={({ target: { value } }) => changeName(value)}></input>
+      <FloatButton.Group
+        trigger="click"
+        shape="square"
+        description="HELP"
+        tooltip={<div>提出您的建议吧</div>}
+        type="primary"
+        style={{ right: 24 }}
+        icon={<CustomerServiceOutlined />}
+        badge={{ dot: true }}
+      >
+        <FloatButton />
+        <FloatButton icon={<CommentOutlined />} badge={{ dot: true }} href="/sMeDo" />
+        <FloatButton.BackTop />
+      </FloatButton.Group>
       <div>
-        <ProductList />
-        <Goods getGoodsListData={getGoodsListData} />
+        {memoizedGoods}
       </div>
     </div>
   );
 };
 
-export default observer(Login);
+export default Login;

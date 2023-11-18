@@ -10,7 +10,7 @@ import Home from "../App";
 import GoodDetails from "../components/GoodDetails";
 import Me from "../components/Me";
 // const GoodDetails = React.lazy(() => import("../components/GoodDetails"));
-// const Me = React.lazy(() => import("../components/Me"));
+const WantMeDo = React.lazy(() => import("../components/WantMeDo"));
 const routes: RouteObject[] = [
   {
     path: "/",
@@ -53,6 +53,10 @@ const routes: RouteObject[] = [
   {
     path: "/me",
     element: <Me />,
+  },
+  {
+    path: "/sMeDo",
+    element: <WantMeDo />,
   },
 ];
 
