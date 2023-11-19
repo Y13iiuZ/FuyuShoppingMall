@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { TrademarkCircleOutlined } from "@ant-design/icons";
-import { Button } from "antd";
 import axios from "axios";
 import "./App.scss";
 import Weather from "./components/weather";

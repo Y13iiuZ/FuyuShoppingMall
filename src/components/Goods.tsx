@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./style/goods.scss";
-import Like from "./Like";
 interface goodsImgSrc {
   src: string[];
 }
@@ -41,7 +40,7 @@ const Goods: React.FC<GoodsProps> = ({ getGoodsListData }) => {
                 key={item.id}
               >
                 <Link to={`/goodDetails`} state={item}>
-                  <div className="goodsCard" key={index}>
+                  <div className="goodsCard" key={item.id}>
                     <div className="content">
                       <img
                         src={`/goodsList/${gSrc}`}
@@ -61,13 +60,6 @@ const Goods: React.FC<GoodsProps> = ({ getGoodsListData }) => {
                     </div>
                   </div>
                 </Link>
-
-                <Like
-                  style={{ marginBottom: "5rem" }}
-                  like={item.likeNumber}
-                  dislike={item.dislikeNumber}
-                  key={item.id}
-                />
               </div>
             </>
           );

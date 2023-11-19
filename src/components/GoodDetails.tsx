@@ -1,20 +1,26 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import Like from "./Like";
 import Mock from "mockjs";
 const productId = Mock.mock("@guid");
 import "./style/goodDetails.scss";
 const GoodDetails: React.FC = () => {
   const { state } = useLocation();
-  const { id, name, price, stars, category } = state;
+  console.log(useLocation());
+  const { id, name, price, stars, category,likeNumber,dislikeNumber } = state;
   return (
-    <div style={{ position: "relative",display:'grid',placeItems:'center'}}>
+    <div
+      style={{ position: "relative", display: "grid", placeItems: "center" }}
+    >
       <div className="detailPrice">
         <div className="detailPrice-img">
           <div className="img"></div>
         </div>
         <div className="detailPrice-title">{name}</div>
         <div className="detailPrice-subtitle">
-          {category} | {stars} | 产品号: {id}{productId}{"ztx"}
+          {category} | {stars} | 产品号: {id}
+          {productId}
+          {"ztx"}
         </div>
         <hr className="detailPrice-divider" />
         <div className="detailPrice-footer">
@@ -31,6 +37,12 @@ const GoodDetails: React.FC = () => {
           </button>
         </div>
       </div>
+      <Like
+        style={{ marginBottom: "5rem",marginTop:'0.2rem' }}
+        like={likeNumber}
+        dislike={dislikeNumber}
+        key={id}
+      />
     </div>
   );
 };
