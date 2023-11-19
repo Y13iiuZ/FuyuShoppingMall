@@ -25,17 +25,19 @@ const Login: React.FC = () => {
         description="HELP"
         tooltip={<div>提出您的建议吧</div>}
         type="primary"
-        style={{ right: 24 }}
+        style={{ right: 24, bottom: 80 }}
         icon={<CustomerServiceOutlined />}
         badge={{ dot: true }}
       >
         <FloatButton />
-        <FloatButton icon={<CommentOutlined />} badge={{ dot: true }} href="/sMeDo" />
-        <FloatButton.BackTop />
+        <FloatButton
+          icon={<CommentOutlined />}
+          badge={{ dot: true }}
+          href="/sMeDo"
+        />
       </FloatButton.Group>
-      <div>
-        {memoizedGoods}
-      </div>
+      <FloatButton.BackTop style={{ bottom: 10 }} />
+      <div>{memoizedGoods}</div>
     </div>
   );
 };
