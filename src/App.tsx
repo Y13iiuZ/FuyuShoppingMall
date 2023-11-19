@@ -1,10 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { TrademarkCircleOutlined } from "@ant-design/icons";
 import { Button } from "antd";
-import axios from 'axios'
+import axios from "axios";
 import "./App.scss";
+import Weather from "./components/weather";
+import { info } from "console";
 const App: React.FC = () => {
+  const [weatherData, setWeatherData] = useState({
+    temperature: "",
+    info: "",
+    humidity: "",
+    power: "",
+    aqi: "",
+    direct: "",
+  });
+  const requestAPI = () => {
+    axios
+      .get("/api1/simpleWeather/query", {
+        params: {
+          key: "1394c395ddd171dbd80b194cd636bc1f",
+          city: "成都",
+        },
+      })
+      .then((res) => {
+        console.log(res.data.result.realtime);
+        const { temperature, info, humidity, power, aqi, direct } =
+          res.data.result.realtime;
+        setWeatherData({ temperature, info, humidity, power, aqi, direct });
+      })
+      .catch((error: string) => {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    requestAPI();
+  }, []);
   return (
     <div className="App">
       <header className="head">
@@ -150,6 +181,14 @@ const App: React.FC = () => {
           style={{ borderRadius: "4px" }}
         />
       </div>
+      <Weather
+        temperature={+weatherData.temperature}
+        info={weatherData.info}
+        humidity={+weatherData.humidity}
+        power={weatherData.power}
+        aqi={weatherData.aqi}
+        direct={weatherData.direct}
+      />
     </div>
   );
 };
