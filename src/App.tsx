@@ -41,6 +41,7 @@ const App: React.FC = () => {
         <nav className="navbar">
           <ul className="navbar-nav">
             <h1 style={{ color: "#fff", fontWeight: 1000 }}>
+              <NavLink to="/" className="active" end>
               FUPLAY & SHOP
               <TrademarkCircleOutlined
                 style={{
@@ -48,6 +49,7 @@ const App: React.FC = () => {
                   top: ".2rem",
                 }}
               />
+              </NavLink>
             </h1>
             <li className="nav-item">
               <NavLink to="/" className="active">
