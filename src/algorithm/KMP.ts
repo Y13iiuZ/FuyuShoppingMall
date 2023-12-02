@@ -1,5 +1,5 @@
 //在文本字符串中查找子串
-
+//移动位数 = 已匹配的字符数 - 对应的部分匹配值
 function buildPatternTable(pattern: string): number[] {  //用于构建模式串的部分匹配表——构建LPS数组(时间复杂度为O(N+M)，其中N是文本串的长度，M是模式串的长度)
     const table: number[] = [0];
     let prefixIndex = 0;
@@ -46,6 +46,6 @@ function buildPatternTable(pattern: string): number[] {  //用于构建模式串
   
   // 示例
   const text = "ABCABDABABCABCDABDE";
-  const pattern = "ABCABCD";
+  const pattern = "ABCDABD";
   const index = kmpSearch(text, pattern);
-  console.log(index); // 输出：10
+  console.log(index); // 输出：11
