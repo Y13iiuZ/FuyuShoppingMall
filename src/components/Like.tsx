@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./style/like.scss";
 import { Input, Tooltip } from "antd";
 
-type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
-type PartialObj = PartialBy<likeProps, 'style'| 'key'>
+type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+type PartialObj = PartialBy<likeProps, "style" | "key">;
 
 interface likeProps {
   style: React.CSSProperties;
@@ -17,7 +17,6 @@ const Like: React.FC<PartialObj> = ({ style, like, dislike, key }) => {
   const [dislikes, setDisLikes] = useState<number>(dislike);
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const [disLiked, setDisLiked] = useState<boolean>(false);
-
   const handleToggleLike = () => {
     if (!isLiked && !disLiked) {
       setIsLiked(true);
