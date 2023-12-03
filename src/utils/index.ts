@@ -88,3 +88,47 @@ export type TupleToUnion<T> = T extends Array<infer P> ? P : never;
 type TTuple = [string, number];
 type Res = TTuple[number]; //[number] 表示使用数字类型作为索引，即获取元组中的第几个元素的类型
 type ToUnion = TupleToUnion<TTuple>; // string | number
+
+type T10 = ReturnType<() => string>;
+
+//封装最近在力扣刷到的一道题GOGOGO
+interface Module {
+  count: number;
+  message: string;
+  asyncMethod<T, U>(input: Promise<T>): Promise<Action<U>>;
+  syncMethod<T, U>(action: Action<T>): Action<U>;
+}
+interface Action<T> {
+  payload?: T;
+  type: string;
+}
+//经过 Connect 函数之后，返回值类型为
+type Result = {
+  asyncMethod<T, U>(input: T): Action<U>;
+  syncMethod<T, U>(action: T): Action<U>;
+};
+type FuncName<T> = {
+  [P in keyof T]: T[P] extends Function ? P : never;
+}[keyof T];
+
+type ConnectOrigin = (module: Module) => { [T in FuncName<Module>]: Module[T] };
+/*
+ * type Connect = (module: Module) => {
+ *   asyncMethod: <T, U>(input: Promise<T>) => Promise<Action<U>>;
+ *   syncMethod: <T, U>(action: Action<T>) => Action<U>;
+ * }
+ */
+
+/**
+ * @description:开始编写
+ * @param: infer、extends
+ */
+type ExtractConnect<P> = {
+  [k in FuncName<P>]: P[k] extends (input: Promise<infer T>) => Promise<infer U>
+    ? (input: T) => U
+    : P[k] extends (action: Action<infer T>) => Action<infer U>
+    ? (action: T) => Action<U>
+    : never;
+};
+
+type Connect = (module: Module) => ExtractConnect<Module>;
