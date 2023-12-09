@@ -4,7 +4,8 @@ import { TrademarkCircleOutlined } from "@ant-design/icons";
 import axios from "axios";
 import "./App.scss";
 import Weather from "./components/weather";
-import { info } from "console";
+import { driver } from "driver.js";
+import "driver.js/dist/driver.css";
 const App: React.FC = () => {
   const [weatherData, setWeatherData] = useState({
     temperature: "",
@@ -35,24 +36,50 @@ const App: React.FC = () => {
   useEffect(() => {
     requestAPI();
   }, []);
+
+  const driverObj = driver({
+    showProgress: true,
+    steps: [
+      { element: '.textLogo', popover: { title: 'textLogo', description: '这是我设计的文字LOGO!' } },
+      { element: '.navbar-nav', popover: { title: 'Nav', description: '这是导航栏!' } },
+      { element: '.voltage-button', popover: { title: 'voltageButton', description: '点击按钮进入购物吧!' } },
+      { element: '.imgArea', popover: { title: 'advertisingImages', description: '每天不断更新仅展示最火的热销图!' } },
+    ],
+    nextBtnText:'下一步',
+    prevBtnText:'上一步',
+    doneBtnText:'完成',
+    progressText: 'Step{{current}} of {{total}}'
+  });
+  driverObj.drive();  // Starts at step 0
+  // const driverObj2 = driver();
+  // driverObj2.highlight({
+  //   element: ".home",
+  //   popover: {
+  //     title: "Home",
+  //     description: "点击返回首页!",
+  //   },
+  // });
   return (
     <div className="App">
       <header className="head">
         <nav className="navbar">
           <ul className="navbar-nav">
-            <h1 style={{ color: "#fff", fontWeight: 1000 }}>
+            <h1
+              style={{ color: "#fff", fontWeight: 1000 }}
+              className="textLogo"
+            >
               <NavLink to="/" className="active" end>
-              FUPLAY & SHOP
-              <TrademarkCircleOutlined
-                style={{
-                  position: "absolute",
-                  top: ".2rem",
-                }}
-              />
+                FUPLAY & SHOP
+                <TrademarkCircleOutlined
+                  style={{
+                    position: "absolute",
+                    top: ".2rem",
+                  }}
+                />
               </NavLink>
             </h1>
             <li className="nav-item">
-              <NavLink to="/" className="active">
+              <NavLink to="/" className="active home">
                 首页
               </NavLink>
             </li>
