@@ -35,22 +35,43 @@ const App: React.FC = () => {
   };
   useEffect(() => {
     requestAPI();
+    stepsProgress();
   }, []);
 
-  const driverObj = driver({
-    showProgress: true,
-    steps: [
-      { element: '.textLogo', popover: { title: 'textLogo', description: '这是我设计的文字LOGO!' } },
-      { element: '.navbar-nav', popover: { title: 'Nav', description: '这是导航栏!' } },
-      { element: '.voltage-button', popover: { title: 'voltageButton', description: '点击按钮进入购物吧!' } },
-      { element: '.imgArea', popover: { title: 'advertisingImages', description: '每天不断更新仅展示最火的热销图!' } },
-    ],
-    nextBtnText:'下一步',
-    prevBtnText:'上一步',
-    doneBtnText:'完成',
-    progressText: 'Step{{current}} of {{total}}'
-  });
-  driverObj.drive();  // Starts at step 0
+  const stepsProgress = () => {
+    const driverObj = driver({
+      showProgress: true,
+      steps: [
+        {
+          element: ".textLogos",
+          popover: { title: "textLogo", description: "这是我设计的文字LOGO!" },
+        },
+        {
+          element: ".navbar-nav",
+          popover: { title: "Nav", description: "这是导航栏!" },
+        },
+        {
+          element: ".voltage-button",
+          popover: {
+            title: "voltageButton",
+            description: "点击按钮进入购物吧!",
+          },
+        },
+        {
+          element: ".imgArea",
+          popover: {
+            title: "advertisingImages",
+            description: "每天不断更新仅展示最火的热销图!",
+          },
+        },
+      ],
+      nextBtnText: "下一步",
+      prevBtnText: "上一步",
+      doneBtnText: "完成",
+      progressText: "Step{{current}} of {{total}}",
+    });
+    driverObj.drive(); // Starts at step 0
+  };
   // const driverObj2 = driver();
   // driverObj2.highlight({
   //   element: ".home",
@@ -66,7 +87,7 @@ const App: React.FC = () => {
           <ul className="navbar-nav">
             <h1
               style={{ color: "#fff", fontWeight: 1000 }}
-              className="textLogo"
+              className="textLogos"
             >
               <NavLink to="/" className="active" end>
                 FUPLAY & SHOP

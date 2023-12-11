@@ -132,3 +132,11 @@ type ExtractConnect<P> = {
 };
 
 type Connect = (module: Module) => ExtractConnect<Module>;
+
+export const HtmlDecode = (text: string) => {
+  return text
+    .replace(/&/g, "&")
+    .replace(/"/g, '"')
+    .replace(/</g, "<")
+    .replace(/>/g, ">");
+};

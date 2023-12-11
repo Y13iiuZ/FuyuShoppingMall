@@ -121,9 +121,7 @@ module.exports = function (webpackEnv) {
         options: cssOptions,
       },
       {
-        // Options for PostCSS as we reference these options twice
-        // Adds vendor prefixing based on your specified browser support in
-        // package.json
+        // 根据指定的浏览器支持添加供应商前缀
         loader: require.resolve('postcss-loader'),
         options: {
           postcssOptions: {
@@ -188,18 +186,17 @@ module.exports = function (webpackEnv) {
 
   return {
     target: ['browserslist'],
-    // Webpack noise constrained to errors and warnings
+    // 受限于错误和警告的Webpack噪音
     stats: 'errors-warnings',
     mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
-    // Stop compilation early in production
+    // 在生产早期停止编译
     bail: isEnvProduction,
     devtool: isEnvProduction
       ? shouldUseSourceMap
         ? 'source-map'
         : false
       : isEnvDevelopment && 'cheap-module-source-map',
-    // These are the "entry points" to our application.
-    // This means they will be the "root" imports that are included in JS bundle.
+    // 这些是我们应用程序的“入口点”
     entry: paths.appIndexJs,
     output: {
       // The build folder.
@@ -748,8 +745,7 @@ module.exports = function (webpackEnv) {
           },
         }),
     ].filter(Boolean),
-    // Turn off performance processing because we utilize
-    // our own hints via the FileSizeReporter
+    // 关闭性能处理
     performance: false,
   };
 };
