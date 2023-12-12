@@ -108,7 +108,7 @@ type Result = {
   syncMethod<T, U>(action: T): Action<U>;
 };
 type FuncName<T> = {
-  [P in keyof T]: T[P] extends Function ? P : never;
+  [P in keyof T]: T[P] extends (...args: any[]) => any ? P : never;
 }[keyof T];
 
 type ConnectOrigin = (module: Module) => { [T in FuncName<Module>]: Module[T] };
@@ -140,3 +140,16 @@ export const HtmlDecode = (text: string) => {
     .replace(/</g, "<")
     .replace(/>/g, ">");
 };
+
+export const randomDrawing = (peoples: any[]) => {
+    const totalWeight = peoples.reduce((sum:number, person) => sum + person.w, 0);
+    const randomDrawing = Math.random() * totalWeight;
+    let initDrawingPeople = 0
+    for(const person of peoples) {
+        initDrawingPeople += person.w
+        if(randomDrawing < initDrawingPeople) {
+            return person
+        }
+    }
+    return null;
+}

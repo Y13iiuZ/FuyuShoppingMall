@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Button, Space } from "antd";
+import { Button, Space, Card, Flex, Typography } from "antd";
 import { createFromIconfontCN } from "@ant-design/icons";
 import store from "../store/CartStore";
 import { observer } from "mobx-react-lite";
+import { randomDrawing } from "../utils";
 /* ----------类组件---------- */
 
 // interface CounterState {
@@ -48,6 +49,15 @@ enum Icon {
   python = "icon-python",
 }
 const iconValues: string[] = Object.values(Icon); // 将枚举值存储在数组中
+
+const cardStyle: React.CSSProperties = {
+  width: 620,
+};
+
+const imgStyle: React.CSSProperties = {
+  display: "block",
+  width: 273,
+};
 const Counter: React.FC = () => {
   const {
     data: { name },
@@ -55,11 +65,21 @@ const Counter: React.FC = () => {
   } = store;
   const [names, setName] = useState(name);
   const [count, setCount] = useState("");
+  const [personDemo, setPersonDemo] = useState([
+    { n: "p1", w: 100 },
+    { n: "p2", w: 200 },
+    { n: "p3", w: 150 },
+    { n: "p4", w: 180 },
+    { n: "p5", w: 190 },
+    { n: "p6", w: 175 },
+  ]);
+  const getLuckyPerson = randomDrawing(personDemo);
   useEffect(() => {
     const savedName = localStorage.getItem("name");
     if (savedName) {
       setName(savedName);
     }
+    console.log(1);
   }, [name]);
   const handleClick = (): void => {
     const randomValue: number = Math.trunc(Math.random() * iconValues.length);
@@ -83,7 +103,35 @@ const Counter: React.FC = () => {
       </Space>
       <div>
         <p>简易mobx {names}</p>
-        <input onChange={({ target: { value } }) => changeName(value)}></input>
+        <input onChange={({ target: { value } }) => changeName(value)} />
+      </div>
+      <div>
+        <Card
+          hoverable
+          style={cardStyle}
+          bodyStyle={{ padding: 0, overflow: "hidden" }}
+        >
+          <Flex justify="space-between">
+            <img
+              alt="avatar"
+              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+              style={imgStyle}
+            />
+            <Flex
+              vertical
+              align="flex-end"
+              justify="space-between"
+              style={{ padding: 32 }}
+            >
+              <Typography.Title level={3}>
+                {`今天中奖的幸运儿是:${getLuckyPerson.n}`}
+              </Typography.Title>
+              <Button type="text" href="https://ant.design" target="_blank">
+                Get Start
+              </Button>
+            </Flex>
+          </Flex>
+        </Card>
       </div>
     </div>
   );
