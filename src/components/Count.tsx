@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Space, Card, Flex, Typography } from "antd";
+import { Button, Space, Card, Flex, Typography, Watermark } from "antd";
 import { createFromIconfontCN } from "@ant-design/icons";
 import store from "../store/CartStore";
 import { observer } from "mobx-react-lite";
@@ -89,7 +89,8 @@ const Counter: React.FC = () => {
     }, 1000);
   };
   return (
-    <div>
+    <Watermark content={["张铁曦", "18381037727"]}>
+    <div style={{height: "100vh"}}>
       <h1>
         抽到什么学什么:
         <IconFont type={`${count}`} />{" "}
@@ -126,14 +127,15 @@ const Counter: React.FC = () => {
               <Typography.Title level={3}>
                 {`今天中奖的幸运儿是:${getLuckyPerson.n}`}
               </Typography.Title>
-              <Button type="text" href="https://ant.design" target="_blank">
-                Get Start
+              <Button type="text" href="javascript:void(0);" target="_blank">
+                点击参与
               </Button>
             </Flex>
           </Flex>
         </Card>
       </div>
     </div>
+    </Watermark>
   );
 };
 export default observer(Counter);

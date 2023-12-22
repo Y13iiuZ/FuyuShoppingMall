@@ -17,9 +17,9 @@
     "isolatedModules": false, // 禁用隔离模块加载
     "noEmit": true, // 不输出(意思是不编译代码，只执行类型检查
     "jsx": "react-jsx", // 在.tsx文件中支持JSX
-    "baseUrl": "./src", // 项目根目录
+    "baseUrl": ".", // 项目根目录
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["src/*"]
     }
   },
   "include": ["src","src/**/*","src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx"],

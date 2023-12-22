@@ -1,16 +1,17 @@
 import React from "react";
 import { RouteObject } from "react-router-dom";
-import Login from "../components/Login";
-import Count from "../components/Count";
-import List from "../components/List";
-import Error from "../components/NotPage";
-import Play from "../components/Play";
-import PlayGame from "../components/PlayGame";
-import Home from "../App";
-import GoodDetails from "../components/GoodDetails";
-import Me from "../components/Me";
-// const GoodDetails = React.lazy(() => import("../components/GoodDetails"));
-const WantMeDo = React.lazy(() => import("../components/WantMeDo"));
+const Login = React.lazy(() => import( "../components/Login"));
+const Count = React.lazy(() => import( "../components/Count"));
+const List = React.lazy(() => import( "../components/List"));
+const Error = React.lazy(() => import( "../components/NotPage"));
+const Play = React.lazy(() => import( "../components/Play"));
+const PlayGame = React.lazy(() => import( "../components/PlayGame"));
+const Home = React.lazy(() => import( "../App"));
+const GoodDetails = React.lazy(() => import( "../components/GoodDetails"));
+const Me = React.lazy(() => import( "../components/Me"));
+const WantMeDo = React.lazy(() => import("@/components/WantMeDo"));
+const UserLogin = React.lazy(() => import("../components/UserLogin"));
+const UserRegist = React.lazy(() => import("../components/UserRegist"));
 const routes: RouteObject[] = [
   {
     path: "/",
@@ -58,6 +59,14 @@ const routes: RouteObject[] = [
     path: "/sMeDo",
     element: <WantMeDo />,
   },
+  {
+    path: "/UserLogin",
+    element: <UserLogin />,
+  },
+  {
+    path: "/UserRegist",
+    element: <UserRegist />,
+  }
 ];
 
 export default routes;
