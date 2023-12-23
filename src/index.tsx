@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Routes from "./router";
 import "./index.scss";
-import './mock';
+import "./mock";
 import "antd/dist/reset.css";
 import reportWebVitals from "./reportWebVitals"; /* 启用性能测量和报告功能 */
 const root = ReactDOM.createRoot(
@@ -11,7 +11,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+    <Suspense>
     <RouterProvider router={createBrowserRouter(Routes)} />
+    </Suspense>
   </React.StrictMode>
 );
 reportWebVitals();
