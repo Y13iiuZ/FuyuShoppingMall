@@ -27,9 +27,10 @@ interface Session {
   token: string;
 }
 
-const users: User[] = [JSON.parse(localStorage.getItem('userInfo') as string)] || [];
+const users: User[] =
+  [JSON.parse(localStorage.getItem("userInfo") as string)] || [];
 
-const sessions: Session[] = [] || localStorage.getItem('session');
+const sessions: Session[] = [] || localStorage.getItem("session");
 
 //带有cookie的登录
 // const login = async (username: string, password: string): Promise<void> => {
@@ -49,10 +50,10 @@ const UserLogin: React.FC = () => {
 
   const onFinish = (values: any) => {
     console.log("Success:", values);
-    const {username, password} = values;
+    const { username, password } = values;
     userLogin(username, password);
   };
-  
+
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
   };
@@ -70,17 +71,18 @@ const UserLogin: React.FC = () => {
       sessions.push(session);
       localStorage.setItem("session", JSON.stringify(session)); // 存储会话session;
       console.log("登录成功!");
-      navigate('/');
+      navigate("/");
       return token;
     } else {
-      console.log('去注册')
+      console.log("去注册");
       navigate("/UserRegist");
     }
   };
 
   const generateToken = (): string => {
-    const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-    let token = '';
+    const characters =
+      "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let token = "";
     for (let i = 0; i < 16; i++) {
       const randomIndex = Math.trunc(Math.random() * characters.length);
       token += characters.charAt(randomIndex);
@@ -88,6 +90,15 @@ const UserLogin: React.FC = () => {
     return token;
   };
 
+  const reqTest = () => {
+    axios
+      .get("/api2/hello")
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+  reqTest()
   return (
     <>
       <div className="UserLogin">
