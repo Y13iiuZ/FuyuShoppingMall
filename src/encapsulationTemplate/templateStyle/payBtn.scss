@@ -1,0 +1,51 @@
+.payButton {
+  position: relative;
+  overflow: hidden;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50px;
+  background-color: hsl(255deg 50% 40%);
+  border: solid 4px hsl(50deg 100% 50%);
+  font-family: inherit;
+}
+
+.pay-btn,
+.hover-btn-pay {
+  background-color: hsl(255deg 50% 40%);
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+//   padding: 15px 20px;
+  border-radius: 45px;
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.hover-btn-pay {
+  position: absolute;
+  inset: 0;
+  background-color: hsl(255deg 50% 49%);
+  transform: translate(0%, 100%);
+}
+
+.pay-btn span {
+  color: hsl(0, 0%, 100%);
+}
+
+.hover-btn-pay span {
+  color: hsl(50deg 100% 50%);
+}
+
+.payButton:hover .pay-btn {
+  transform: translate(0%, -100%);
+}
+
+.payButton:hover .hover-btn-pay {
+  transform: translate(0%, 0%);
+}

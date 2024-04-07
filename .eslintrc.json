@@ -18,6 +18,7 @@
   "plugins": ["@typescript-eslint", "react"],
   "rules": {
     "linebreak-style": ["off"],
+    "react/prop-types": ["off"],
     "quotes": ["off"],
     "semi": ["off"],
     "@typescript-eslint/ban-types": [

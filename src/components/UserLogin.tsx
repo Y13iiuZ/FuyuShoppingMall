@@ -27,11 +27,6 @@ interface Session {
   token: string;
 }
 
-const users: User[] =
-  [JSON.parse(localStorage.getItem("userInfo") as string)] || [];
-
-const sessions: Session[] = [] || localStorage.getItem("session");
-
 //带有cookie的登录
 // const login = async (username: string, password: string): Promise<void> => {
 //   try {
@@ -46,6 +41,10 @@ const sessions: Session[] = [] || localStorage.getItem("session");
 
 const UserLogin: React.FC = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const users: User[] =
+    [JSON.parse(localStorage.getItem("userInfo") as string)] || [];
+
+  const sessions: Session[] = [] || localStorage.getItem("session");
   const navigate = useNavigate();
 
   const onFinish = (values: any) => {
@@ -59,9 +58,11 @@ const UserLogin: React.FC = () => {
   };
 
   const userLogin = (username: string, password: string) => {
+    console.log(users);
     const user = users.find(
-      (u) => u.username === username && u.password === password
+      (u) => u?.username === username && u?.password === password
     );
+    console.log(user)
     if (user) {
       const token = generateToken();
       const session: Session = {
@@ -71,6 +72,7 @@ const UserLogin: React.FC = () => {
       sessions.push(session);
       localStorage.setItem("session", JSON.stringify(session)); // 存储会话session;
       console.log("登录成功!");
+      localStorage.setItem("isLogin", JSON.stringify(true));
       navigate("/");
       return token;
     } else {
@@ -90,15 +92,15 @@ const UserLogin: React.FC = () => {
     return token;
   };
 
-  const reqTest = () => {
-    axios
-      .get("/api2/hello")
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => console.log(err));
-  };
-  reqTest()
+  // const reqTest = () => {
+  //   axios
+  //     .get("/api2/hello")
+  //     .then((res) => {
+  //       console.log(res.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+  // reqTest()
   return (
     <>
       <div className="UserLogin">
@@ -120,21 +122,18 @@ const UserLogin: React.FC = () => {
           }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
-          autoComplete="off"
-        >
+          autoComplete="off">
           <Form.Item<FieldType>
             label="Username"
             name="username"
-            rules={[{ required: true, message: "请输入你的用户名!" }]}
-          >
+            rules={[{ required: true, message: "请输入你的用户名!" }]}>
             <Input prefix={<UserOutlined />} placeholder="请输入你的用户名!" />
           </Form.Item>
 
           <Form.Item<FieldType>
             label="Password"
             name="password"
-            rules={[{ required: true, message: "请输入你的密码!" }]}
-          >
+            rules={[{ required: true, message: "请输入你的密码!" }]}>
             <Input.Password
               prefix={passwordVisible ? <UnlockOutlined /> : <LockOutlined />}
               visibilityToggle={{
@@ -151,8 +150,7 @@ const UserLogin: React.FC = () => {
           <Form.Item<FieldType>
             name="remember"
             valuePropName="checked"
-            wrapperCol={{ offset: 8, span: 16 }}
-          >
+            wrapperCol={{ offset: 8, span: 16 }}>
             <Checkbox>Remember me</Checkbox>
           </Form.Item>
 

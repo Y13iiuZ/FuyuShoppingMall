@@ -25,7 +25,7 @@ const Goods: React.FC<GoodsProps> = ({ getGoodsListData }) => {
   return (
     <>
       <div className="goodsDisplay">
-        {getGoodsListData.map((item, index) => {
+        {getGoodsListData?.map((item: any, index: number) => {
           const { length } = goodsimg.src;
           const randomIndex = Math.trunc(Math.random() * length);
           const gSrc = goodsimg.src[randomIndex];
@@ -37,16 +37,15 @@ const Goods: React.FC<GoodsProps> = ({ getGoodsListData }) => {
                   flexDirection: "column",
                   alignItems: "center",
                 }}
-                key={item.id}
-              >
-                <Link to={`/goodDetails`} state={item}>
-                  <div className="goodsCard" key={item.id}>
+                key={item.id}>
+                <div className="goodsCard" key={item.id}>
+                  <Link to={`/goodDetails`} state={item}>
                     <div className="content">
                       <img
                         src={`/goodsList/${gSrc}`}
                         alt="demoPic"
-                        width={150}
-                        height={120}
+                        width={158}
+                        height={112}
                       />
                       <div className="description">
                         <p className="title">
@@ -58,8 +57,8 @@ const Goods: React.FC<GoodsProps> = ({ getGoodsListData }) => {
                         <p className="price">{item.price}</p>
                       </div>
                     </div>
-                  </div>
-                </Link>
+                  </Link>
+                </div>
               </div>
             </>
           );

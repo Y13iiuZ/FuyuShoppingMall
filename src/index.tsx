@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Routes from "./router";
@@ -10,10 +10,8 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
     <Suspense>
     <RouterProvider router={createBrowserRouter(Routes)} />
     </Suspense>
-  </React.StrictMode>
 );
 reportWebVitals();

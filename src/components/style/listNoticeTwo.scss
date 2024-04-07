@@ -1,47 +1,55 @@
-.results-summary-container {
+.results-summary-container2 {
     font-family: "Hanken Grotesk", sans-serif;
     display: flex;
-    width: 320px;
-    border-radius: 30px;
-    box-shadow: 10px 20px 20px rgba(120, 87, 255, 0.3);
+    flex-direction: column;
+    width: 350px;
+    gap: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 30px rgba(120, 87, 255, 0.8);
     backface-visibility: hidden;
   }
   
-  .heading-primary,
+  .heading-primary2,
   .heading-secondary,
-  .heading-tertiary {
+  .heading-tertiary2 {
     color: #ffffff;
     text-transform: capitalize;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     text-transform: uppercase;
     letter-spacing: 1px;
   }
   
-  .heading-primary {
+  .heading-primary2 {
     font-size: 36px;
-    font-weight: 600;
+    font-weight: 700;
     background-image: linear-gradient(to right, #f7bb97, #dd5e89);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
-    transform: scale(1.6);
+    transform: scale(1.4);
   }
   
   .heading-secondary {
     font-size: 24px;
-    font-weight: 600;
-    margin-top: 20px;
-    letter-spacing: 2px;
+    font-weight: 700;
+    margin-top: 15px;
+    letter-spacing: 1px;
+  }
+  
+  .heading-secondary--blue {
+    color: hsl(224, 30%, 27%);
   }
   
   .heading-tertiary {
     font-size: 20px;
     font-weight: 500;
+    margin-bottom: 20px;
     color: hsl(221, 100%, 96%);
   }
   
   .paragraph {
     font-size: 17px;
-    line-height: 1.4;
+    line-height: 1.6;
     color: hsl(221, 100%, 96%);
   }
   
@@ -57,60 +65,146 @@
     margin-bottom: 10px;
   }
   
-  .results-summary-container__result {
-    width: 100%;
+  .results-summary-container2__result {
     display: flex;
     flex-direction: column;
     text-align: center;
     align-items: center;
     justify-content: center;
-    padding: 20px;
-    border-radius: 30px;
-    background-image: linear-gradient(to bottom, #734b6d, #42275a);
-    animation: gradient 9s infinite alternate linear;
-    .result-box {
-    width: 160px;
-    height: 160px;
+    padding: 20px 10px;
+    border-radius: 10px 10px 0 0;
+    background-image: linear-gradient(to bottom, #aa076b, #61045f);
+    .result-box2 {
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     background-image: linear-gradient(-45deg, #ef629f, #42275a);
-    background-color: #56ab2f;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    animation: gradient 9s linear infinite;
   }
   
   .result {
-    margin-top: -8px;
-    font-size: 16px;
+    margin-top: -12px;
+    font-size: 14px;
     font-weight: 400;
     color: hsl(241, 100%, 89%);
   }
   }
   
-  .noticeBtn {
-    width: 240px;
+  .results-summary-container2__options {
+    padding: 0 16px;
+  }
+  
+  .summary-result-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .result-option {
+    width: 100%;
+    height: 40px;
+    background-color: hsl(0, 100%, 97%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .result-option-memory {
+    background-color: hsl(39, 100%, 97%);
+  }
+  
+  .result-option-verbal {
+    background-color: hsl(166, 100%, 97%);
+  }
+  
+  .result-option-Visual {
+    background-color: hsl(234, 85%, 97%);
+  }
+  
+  .icon-box {
+    display: flex;
+    font-size: 16px;
+    align-items: center;
+    gap: 2px;
+  }
+  
+  .reaction-icon-text {
+    color: hsl(0, 100%, 67%);
+  }
+  
+  .memory-icon-text {
+    color: hsl(39, 100%, 56%);
+  }
+  
+  .verbal-icon-text {
+    color: hsl(166, 100%, 37%);
+  }
+  
+  .visual-icon-text {
+    color: hsl(234, 85%, 45%);
+  }
+  
+  .result-box2 {
+    font-size: 14px;
+    color: hsl(241, 100%, 89%);
+    font-weight: 700;
+  }
+  
+  .result-box2 span {
+    font-size: 14px;
+    color: hsl(224, 30%, 27%);
+  }
+  
+  .btn {
+    width: 100%;
     padding: 10px;
     color: #ffffff;
     background-image: linear-gradient(to right, #aa076b, #61045f);
     border: none;
-    border-radius: 100px;
-    font-size: 14px;
+    border-radius: 3px;
+    font-size: 17px;
     text-transform: uppercase;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     font-weight: 500;
     cursor: pointer;
-    margin: 20px 0 2px 0;
+    margin: 15px 0 30px 0;
     transition: all 0.3s;
   }
   
-  .noticeBtn:hover {
-    z-index: 2;
-    cursor: pointer;
+  .btn:hover {
     transform: translateY(5px);
     background-image: linear-gradient(to left, #aa076b, #61045f);
+  }
+  
+  .icon {
+    cursor: pointer;
+    filter: grayscale(1);
+    transition: 0.3s linear;
+  }
+  
+  .icon:hover {
+    filter: grayscale(0);
+  }
+  
+  @keyframes background {
+    0% {
+      background-image: linear-gradient(to right, #aa076b, #61045f);
+    }
+  
+    50% {
+      background-image: linear-gradient(to right, #aa076b, #61045f);
+    }
+  
+    100% {
+      background-image: linear-gradient(to right, #ef629f, #42275a);
+    }
   }
   
   @keyframes gradient {
@@ -130,175 +224,176 @@
     }
   }
   
-  .confetti {
+  .confetti2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 60%;
+    position: absolute;
+    width: 360px;
+    height: 50%;
     overflow: hidden;
     z-index: 1000;
   }
   
-  .confetti-piece {
+  .confetti2-piece {
     position: absolute;
     width: 10px;
     height: 20px;
     background-color: hsl(39, 100%, 56%);
     top: 0;
     opacity: 0;
-    animation: makeItRain 3000ms infinite linear;
+    animation: makeItRain 3000ms infinite ease-in-out;
   }
   
-  .confetti-piece:nth-child(1) {
+  .confetti2-piece:nth-child(1) {
     left: 7%;
     transform: rotate(-10deg);
     animation-delay: 182ms;
     animation-duration: 2000ms;
   }
   
-  .confetti-piece:nth-child(2) {
+  .confetti2-piece:nth-child(2) {
     left: 14%;
     transform: rotate(20deg);
     animation-delay: 161ms;
     animation-duration: 2076ms;
   }
   
-  .confetti-piece:nth-child(3) {
+  .confetti2-piece:nth-child(3) {
     left: 21%;
     transform: rotate(-51deg);
     animation-delay: 481ms;
     animation-duration: 2103ms;
   }
   
-  .confetti-piece:nth-child(4) {
+  .confetti2-piece:nth-child(4) {
     left: 28%;
     transform: rotate(61deg);
     animation-delay: 334ms;
     animation-duration: 1008ms;
   }
   
-  .confetti-piece:nth-child(5) {
+  .confetti2-piece:nth-child(5) {
     left: 35%;
     transform: rotate(-52deg);
     animation-delay: 302ms;
     animation-duration: 1776ms;
   }
   
-  .confetti-piece:nth-child(6) {
+  .confetti2-piece:nth-child(6) {
     left: 42%;
     transform: rotate(38deg);
     animation-delay: 180ms;
     animation-duration: 1168ms;
   }
   
-  .confetti-piece:nth-child(7) {
+  .confetti2-piece:nth-child(7) {
     left: 49%;
     transform: rotate(11deg);
     animation-delay: 395ms;
     animation-duration: 1200ms;
   }
   
-  .confetti-piece:nth-child(8) {
+  .confetti2-piece:nth-child(8) {
     left: 56%;
     transform: rotate(49deg);
     animation-delay: 14ms;
     animation-duration: 1887ms;
   }
   
-  .confetti-piece:nth-child(9) {
+  .confetti2-piece:nth-child(9) {
     left: 63%;
     transform: rotate(-72deg);
     animation-delay: 149ms;
     animation-duration: 1805ms;
   }
   
-  .confetti-piece:nth-child(10) {
+  .confetti2-piece:nth-child(10) {
     left: 70%;
     transform: rotate(10deg);
     animation-delay: 351ms;
     animation-duration: 2059ms;
   }
   
-  .confetti-piece:nth-child(11) {
+  .confetti2-piece:nth-child(11) {
     left: 77%;
     transform: rotate(4deg);
     animation-delay: 307ms;
     animation-duration: 1132ms;
   }
   
-  .confetti-piece:nth-child(12) {
+  .confetti2-piece:nth-child(12) {
     left: 84%;
     transform: rotate(42deg);
     animation-delay: 464ms;
     animation-duration: 1776ms;
   }
   
-  .confetti-piece:nth-child(13) {
+  .confetti2-piece:nth-child(13) {
     left: 91%;
     transform: rotate(-72deg);
     animation-delay: 429ms;
     animation-duration: 1818ms;
   }
   
-  .confetti-piece:nth-child(14) {
+  .confetti2-piece:nth-child(14) {
     left: 94%;
     transform: rotate(-72deg);
     animation-delay: 429ms;
     animation-duration: 818ms;
   }
   
-  .confetti-piece:nth-child(15) {
+  .confetti2-piece:nth-child(15) {
     left: 96%;
     transform: rotate(-72deg);
     animation-delay: 429ms;
     animation-duration: 2818ms;
   }
   
-  .confetti-piece:nth-child(16) {
+  .confetti2-piece:nth-child(16) {
     left: 98%;
     transform: rotate(-72deg);
     animation-delay: 429ms;
     animation-duration: 2818ms;
   }
   
-  .confetti-piece:nth-child(17) {
+  .confetti2-piece:nth-child(17) {
     left: 50%;
     transform: rotate(-72deg);
     animation-delay: 429ms;
     animation-duration: 2818ms;
   }
   
-  .confetti-piece:nth-child(18) {
+  .confetti2-piece:nth-child(18) {
     left: 60%;
     transform: rotate(-72deg);
     animation-delay: 429ms;
     animation-duration: 1818ms;
   }
   
-  .confetti-piece:nth-child(odd) {
+  .confetti2-piece:nth-child(odd) {
     background-color: hsl(0, 100%, 67%);
   }
   
-  .confetti-piece:nth-child(even) {
+  .confetti2-piece:nth-child(even) {
     z-index: 1;
   }
   
-  .confetti-piece:nth-child(4n) {
+  .confetti2-piece:nth-child(4n) {
     width: 6px;
     height: 14px;
     animation-duration: 4000ms;
     background-color: #c33764;
   }
   
-  .confetti-piece:nth-child(5n) {
+  .confetti2-piece:nth-child(5n) {
     width: 3px;
     height: 10px;
     animation-duration: 4000ms;
     background-color: #b06ab3;
   }
   
-  .confetti-piece:nth-child(3n) {
+  .confetti2-piece:nth-child(3n) {
     width: 4px;
     height: 12px;
     animation-duration: 2500ms;
@@ -306,7 +401,7 @@
     background-color: #dd2476;
   }
   
-  .confetti-piece:nth-child(3n-7) {
+  .confetti2-piece:nth-child(3n-7) {
     background-color: hsl(166, 100%, 37%);
   }
   
@@ -320,7 +415,8 @@
     }
   
     to {
-      transform: translateY(250px);
+      transform: translateY(200px);
     }
   }
+  
   

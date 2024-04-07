@@ -142,14 +142,28 @@ export const HtmlDecode = (text: string) => {
 };
 
 export const randomDrawing = (peoples: any[]) => {
-    const totalWeight = peoples.reduce((sum:number, person) => sum + person.w, 0);
-    const randomDrawing = Math.random() * totalWeight;
-    let initDrawingPeople = 0
-    for(const person of peoples) {
-        initDrawingPeople += person.w
-        if(randomDrawing < initDrawingPeople) {
-            return person
-        }
+  const totalWeight = peoples.reduce(
+    (sum: number, person) => sum + person.w,
+    0
+  );
+  const randomDrawing = Math.random() * totalWeight;
+  let initDrawingPeople = 0;
+  for (const person of peoples) {
+    initDrawingPeople += person.w;
+    if (randomDrawing < initDrawingPeople) {
+      return person;
     }
-    return null;
-}
+  }
+  return null;
+};
+
+export const throttle = (fn: any, delay: number) => {
+  let timer: NodeJS.Timeout | null = null;
+  return function (this: any, ...args: any[]) {
+    if (timer) return;
+    timer = setTimeout(() => {
+      fn.apply(this, args);
+      timer = null;
+    }, delay);
+  };
+};

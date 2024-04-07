@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./style/suggestion.scss";
+import BackBtn from "@/encapsulationTemplate/BackBtn";
 interface Product {
   id: number;
   name: string;
@@ -27,6 +28,7 @@ const ProductList: React.FC = () => {
 
   return (
     <>
+      <BackBtn />
       <div style={{position:'fixed',left:'50%',top:'50%',transform:'translate(-50%,-50%)'}}>
         <div>
           <h1>搜索建议商品</h1>

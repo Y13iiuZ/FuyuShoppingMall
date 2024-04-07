@@ -13,9 +13,9 @@ const imgStyle: React.CSSProperties = {
   display: "block",
   width: 273,
 };
-const Counter: React.FC = () => {
+const Order: React.FC = () => {
   const {
-    data: { name },
+    data: { orders },
   } = store;
   const [personDemo, setPersonDemo] = useState([
     { n: "p1", w: 100 },
@@ -31,18 +31,18 @@ const Counter: React.FC = () => {
     // if (savedName) {
     //   setName(JSON.parse(savedName));
     // }
-    console.log([...name])
+    console.log([...orders])
   }, []);
   return (
     <Watermark content={["张铁曦", "18381037727"]}>
     <BackBtn />
     <div style={{height: "100vh"}}>
       <div>
-        {/* <p>{`购物车的所有商品为:${[...name].length === 0 ? "空" : JSON.stringify([...name])}`}</p> */}
-        <p>{`购物车的所有商品数量为:${[...name].length}`}</p>
+        {/* <p>{`所有订单为:${[...orders].length === 0 ? "空" : JSON.stringify([...orders])}`}</p> */}
+        <p>{`所有订单数量为:${[...orders].length}`}</p>
       </div>
       <div>
-        {[...name].reverse().map((item:any) => {
+        {[...orders].reverse().map((item:any) => {
         const getLuckyPerson = randomDrawing(personDemo);
         return (<Card
           hoverable
@@ -63,10 +63,10 @@ const Counter: React.FC = () => {
               style={{ padding: 32 }}
             >
               <Typography.Title level={3}>
-                {`您添加的商品是:${item ? item : "暂无"}`}
+                {`您购买的商品是:${item ? item : "暂无"}`}
               </Typography.Title>
               <Button type="text">
-                当前购买量级:{getLuckyPerson.n}
+                当前价值比为:{getLuckyPerson.n}
               </Button>
             </Flex>
           </Flex>
@@ -77,4 +77,4 @@ const Counter: React.FC = () => {
     </Watermark>
   );
 };
-export default observer(Counter);
+export default observer(Order);

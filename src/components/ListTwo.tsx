@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./style/listNoticeTwo.scss";
-const List: React.FC = () => {
+const ListTwo: React.FC = () => {
   return (
     <>
       <div className="results-summary-container2">
@@ -29,13 +29,13 @@ const List: React.FC = () => {
       <div className="results-summary-container2__result">
         <div className="heading-tertiary2">NOTICE</div>
         <div className="result-box2">
-          <div className="heading-primary2">1</div>
+          <div className="heading-primary2">50</div>
           <p className="result">/ 100</p>
         </div>
         <div className="result-text-box">
-          <div className="heading-secondary">项目进展初期</div>
+          <div className="heading-secondary">项目进展中期</div>
           <p className="paragraph">
-            项目进展初期...
+            项目进展中期...
           </p>
         </div>
       </div>
@@ -49,7 +49,7 @@ const List: React.FC = () => {
               </svg>
               <span className="reaction-icon-text">Componentization</span>
             </div>
-            <div className="result-box2"><span>25</span> / 100</div>
+            <div className="result-box2"><span>75</span> / 100</div>
           </div>
           <div className="result-option result-option-memory">
             <div className="icon-box">
@@ -60,7 +60,7 @@ const List: React.FC = () => {
               </svg>
               <span className="memory-icon-text">Memory</span>
             </div>
-            <div className="result-box2"><span>12</span> / 100</div>
+            <div className="result-box2"><span>35</span> / 100</div>
           </div>
           <div className="result-option result-option-verbal">
             <div className="icon-box">
@@ -69,7 +69,7 @@ const List: React.FC = () => {
               </svg>
               <span className="verbal-icon-text">Vitals</span>
             </div>
-            <div className="result-box2"><span>35</span> / 100</div>
+            <div className="result-box2"><span>55</span> / 100</div>
           </div>
           <div className="result-option result-option-Visual">
             <div className="icon-box">
@@ -79,7 +79,7 @@ const List: React.FC = () => {
               </svg>
               <span className="visual-icon-text">Visual</span>
             </div>
-            <div className="result-box2"><span>5</span> / 100</div>
+            <div className="result-box2"><span>20</span> / 100</div>
           </div>
           <div className="summary__cta">
             <Link to="/me">
@@ -93,4 +93,4 @@ const List: React.FC = () => {
   );
 };
 
-export default List;
+export default ListTwo;

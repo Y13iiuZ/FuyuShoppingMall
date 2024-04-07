@@ -32,9 +32,9 @@ interface User {
   password: string;
 }
 
-const users: User[] = [JSON.parse(localStorage.getItem('userInfo') as string)] || [];
 
 const UserRegist: React.FC = () => {
+  const users: User[] = [JSON.parse(localStorage.getItem('userInfo') as string)] || []; 
   const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate();
   const onFinish = (values: any) => {
@@ -48,7 +48,7 @@ const UserRegist: React.FC = () => {
   };
 
   const userRegist = (username: string, password: string): void => {
-    const existingUser = users.find((u) => u.username === username);
+    const existingUser = users.find((u) => u?.username === username);
     if (existingUser) {
       console.error("注册失败，用户名已存在!");
     } else {

@@ -210,7 +210,8 @@ const Play: React.FC = () => {
         </>
       )}
       {playing && (
-        <>{loading ? <Loading /> : <RandomRedEnvelope />}
+        <>
+        {loading ? <Loading /> : <RandomRedEnvelope />}
         </>
       )}
     </div>

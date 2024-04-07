@@ -4219,7 +4219,7 @@ const Me: React.FC = () => {
               </g>
             </g>
           </svg> */}
-          <img src="/me.JPG" alt="ztx" />
+          <img src="/me.jpeg" alt="ztx" />
         </div>
         <div className="bottom">
           <div className="content">

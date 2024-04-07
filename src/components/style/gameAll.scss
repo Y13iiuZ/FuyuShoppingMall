@@ -1,0 +1,299 @@
+.main_back {
+    position: absolute;
+    border-radius: 10px;
+    transform: rotate(90deg);
+    width: 11em;
+    height: 11em;
+    background: linear-gradient(270deg, #03a9f4, #cc39a4, #ffb5d2);
+    z-index: -2;
+    box-shadow: inset 0px 0px 180px 5px #ffffff;
+  }
+  
+  .mainGame {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-wrap: wrap;
+    width: 14em;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cardGame {
+    width: 60px;
+    height: 60px;
+    border-top-left-radius: 10px;
+    background: lightgrey;
+    transition: .4s ease-in-out, .2s background-color ease-in-out, .2s background-image ease-in-out;
+    background: rgba(255, 255, 255, 0.596);
+    backdrop-filter: blur(5px);
+    border: 1px solid transparent;
+    -webkit-backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cardGame .instagram {
+    opacity: 0;
+    transition: .2s ease-in-out;
+    fill: #cc39a4;
+  }
+  
+  .cardGame:nth-child(2) {
+    border-radius: 0px;
+  }
+  
+  .cardGame:nth-child(2) .twitter {
+    opacity: 0;
+    transition: .2s ease-in-out;
+    fill: #03A9F4;
+  }
+  
+  .cardGame:nth-child(3) {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 0px;
+  }
+  
+  .cardGame:nth-child(3) .dribble {
+    opacity: 0;
+    transition: .2s ease-in-out;
+    fill: #ffb5d2;
+  }
+  
+  .cardGame:nth-child(4) {
+    border-radius: 0px;
+  }
+  
+  .cardGame:nth-child(4) .codepen {
+    opacity: 0;
+    transition: .2s ease-in-out;
+    fill: black;
+  }
+  
+  .cardGame:nth-child(5) {
+    border-radius: 0px;
+  }
+  
+  .cardGame:nth-child(5) .uiverse {
+    position: absolute;
+    margin-left: 0.2em;
+    margin-top: 0.2em;
+    opacity: 0;
+    transition: .2s ease-in-out;
+  }
+  
+  .cardGame:nth-child(6) {
+    border-radius: 0px;
+  }
+  
+  .cardGame:nth-child(6) .discord {
+    opacity: 0;
+    transition: .2s ease-in-out;
+    fill: #8c9eff;
+  }
+  
+  .cardGame:nth-child(7) {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 0px;
+  }
+  
+  .cardGame:nth-child(7) .github {
+    opacity: 0;
+    transition: .2s ease-in-out;
+    fill: black;
+  }
+  
+  .cardGame:nth-child(8) {
+    border-radius: 0px;
+  }
+  
+  .cardGame:nth-child(8) .telegram {
+    opacity: 0;
+    transition: .2s ease-in-out;
+    fill: #29b6f6;
+  }
+  
+  .cardGame:nth-child(9) {
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 0px;
+  }
+  
+  .cardGame:nth-child(9) .reddit {
+    opacity: 0;
+    transition: .2s ease-in-out;
+  }
+  
+  .mainGame:hover {
+    width: 14em;
+    cursor: pointer;
+  }
+  
+  .mainGame:hover .main_back {
+    opacity: 0;
+  }
+  
+  .mainGame:hover .cardGame {
+    margin: .2em;
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.2);
+  }
+  
+  .mainGame:hover .cardGame:nth-child(5) {
+    border: transparent;
+  }
+  
+  .mainGame:hover .text {
+    opacity: 0;
+    z-index: -3;
+  }
+  
+  .mainGame:hover .instagram {
+    opacity: 1;
+  }
+  
+  .mainGame:hover .twitter {
+    opacity: 1;
+  }
+  
+  .mainGame:hover .dribble {
+    opacity: 1;
+  }
+  
+  .mainGame:hover .codepen {
+    opacity: 1;
+  }
+  
+  .mainGame:hover .uiverse {
+    opacity: 1;
+  }
+  
+  .mainGame:hover .discord {
+    opacity: 1;
+  }
+  
+  .mainGame:hover .github {
+    opacity: 1;
+  }
+  
+  .mainGame:hover .telegram {
+    opacity: 1;
+  }
+  
+  .mainGame:hover .reddit {
+    opacity: 1;
+  }
+  
+  .cardGame:nth-child(1):hover {
+    background-color: #cc39a4;
+  }
+  
+  .cardGame:nth-child(1):hover .instagram {
+    fill: white;
+  }
+  
+  .cardGame:nth-child(2):hover {
+    background-color: #03A9F4;
+  }
+  
+  .cardGame:nth-child(2):hover .twitter {
+    fill: white;
+  }
+  
+  .cardGame:nth-child(3):hover {
+    background-color: #ffb5d2;
+  }
+  
+  .cardGame:nth-child(3):hover .dribble {
+    fill: white;
+  }
+  
+  .cardGame:nth-child(4):hover {
+    background-color: #1E1F26;
+  }
+  
+  .cardGame:nth-child(4):hover .codepen {
+    fill: white;
+  }
+  
+  .cardGame:nth-child(5):hover {
+    animation: backgroundIMG .1s;
+    animation-fill-mode: forwards;
+  }
+  
+  .cardGame:nth-child(5):hover .uiverse #paint0_linear_501_142 stop {
+    stop-color: white;
+  }
+  
+  .cardGame:nth-child(5):hover .uiverse #paint1_linear_501_142 stop {
+    stop-color: white;
+  }
+  
+  .cardGame:nth-child(5):hover .uiverse #paint2_linear_501_142 stop {
+    stop-color: white;
+  }
+  
+  @keyframes backgroundIMG {
+    100% {
+      background-image: linear-gradient(#BF66FF,#6248FF,#00DDEB);
+    }
+  }
+  
+  .cardGame:nth-child(6):hover {
+    background-color: #8c9eff;
+  }
+  
+  .cardGame:nth-child(6):hover .discord {
+    fill: white;
+  }
+  
+  .cardGame:nth-child(7):hover {
+    background-color: black;
+  }
+  
+  .cardGame:nth-child(7):hover .github {
+    fill: white;
+  }
+  
+  .cardGame:nth-child(8):hover {
+    background-color: #29b6f6;
+  }
+  
+  .cardGame:nth-child(8):hover .telegram > path:nth-of-type(1) {
+    fill: white;
+  }
+  
+  .cardGame:nth-child(8):hover .telegram > path:nth-of-type(2) {
+    fill: #29b6f6;
+  }
+  
+  .cardGame:nth-child(8):hover .telegram > path:nth-of-type(3) {
+    fill: #29b6f6;
+  }
+  
+  .cardGame:nth-child(9):hover {
+    background-color: rgb(255,69,0);
+  }
+  
+  .cardGame:nth-child(9) .reddit > g circle {
+    fill: rgb(255,69,0);
+  }
+  
+  .cardGame:nth-child(9) .reddit > g path {
+    fill: white;
+  }
+  
+  .text {
+    position: absolute;
+    font-size: 0.7em;
+    transition: .4s ease-in-out;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.33em;
+    z-index: 3;
+  }
