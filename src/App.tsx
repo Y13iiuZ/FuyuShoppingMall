@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { NavLink, Navigate } from "react-router-dom";
+import { NavLink, Navigate, Link } from "react-router-dom";
 import { TrademarkCircleOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { throttle } from "./utils";
@@ -175,6 +175,7 @@ const App: React.FC = () => {
         </header>
         <section>
           <div className="voltage-button">
+            <Link to="/login">
             <button>欢迎来到FPLAY商城</button>
             <svg
               version="1.1"
@@ -226,7 +227,7 @@ const App: React.FC = () => {
               <div className="dot dot-3"></div>
               <div className="dot dot-4"></div>
               <div className="dot dot-5"></div>
-            </div>
+            </div></Link>
           </div>
         </section>
         {/**采用图片懒加载技术 */}

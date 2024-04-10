@@ -18,6 +18,13 @@ const goodsimg: goodsImgSrc = {
     "panda.png",
     "shoe.jpg",
     "vegetable.jpg",
+    "company_five.jpg",
+    "company_four.jpg",
+    "company_three.jpg",
+    "company_two.jpg",
+    "company_one.jpg",
+    "life_one.jpg",
+    "myCode_one.jpg",
   ],
 };
 const Goods: React.FC<GoodsProps> = ({ getGoodsListData }) => {

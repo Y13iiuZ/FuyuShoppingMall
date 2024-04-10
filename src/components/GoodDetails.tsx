@@ -1,4 +1,4 @@
-import React,{useRef,useEffect} from "react";
+import React,{useRef,useEffect,useState} from "react";
 import { useLocation } from "react-router-dom";
 import Like from "./Like";
 import Mock from "mockjs";
@@ -10,11 +10,15 @@ import CommentBtn from "@/encapsulationTemplate/CommentBtn";
 import Comment from "@/encapsulationTemplate/CommentBox";
 import "./style/goodDetails.scss";
 import BackBtn from "@/encapsulationTemplate/BackBtn";
+import ShowCommentBox from "@/encapsulationTemplate/ShowCommentBox";
 const GoodDetails: React.FC = () => {
   const { state } = useLocation();
   // console.log(useLocation());
   const commentRef = useRef<HTMLDivElement>(null);
-
+  const [isShowComment, setIsShowComment] = useState(false);
+  const handleCommentClick = () => {
+    setIsShowComment(!isShowComment);
+  }
   useEffect(() => {
     // 检查评论区域高度是否超过200px，超过则进行平滑滚动
     if (commentRef.current!.scrollHeight > 20) {
@@ -24,7 +28,7 @@ const GoodDetails: React.FC = () => {
       });
     }
   }, []);
-  const { id, name, price, stars, quantity, likeNumber, dislikeNumber } = state;
+  const { id, name, price, stars, quantity, like_number, dislike_number } = state;
   return (
     <>
     <BackBtn />
@@ -49,8 +53,8 @@ const GoodDetails: React.FC = () => {
       </div>
       <Like
         style={{ marginTop: "0.2rem" }}
-        like={likeNumber}
-        dislike={dislikeNumber}
+        like={like_number}
+        dislike={dislike_number}
         key={id}
       />
       <div
@@ -63,7 +67,7 @@ const GoodDetails: React.FC = () => {
           height:65
         }}>
         <LikeBtn />
-        <CommentBtn />
+        <CommentBtn addCmoment={handleCommentClick}/>
         <CartBtn names={name}/>
         <PayBtn order={name}/>
       </div>
@@ -75,13 +79,8 @@ const GoodDetails: React.FC = () => {
         right: '8%'
       }}>
         <Comment author="Alice" content="这是第一条评论" />
-        <Comment author="Bob" content="这是第二条评论" />
-        <Comment author="Coke" content="这是第三条评论" />
-        <Comment author="Taro" content="这是第四条评论" />
-        <Comment author="Electron" content="这是第五条评论" />
-        <Comment author="Fluter" content="这是第六条评论" />
-        <Comment author="React" content="这是第七条评论" />
       </div>
+      {isShowComment && <ShowCommentBox />}
     </div>
     </>
   );
