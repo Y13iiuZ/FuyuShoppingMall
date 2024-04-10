@@ -48,4 +48,4 @@ function buildPatternTable(pattern: string): number[] {  //用于构建模式串
   const text = "ABCABDABABCABCDABDE";
   const pattern = "ABCDABD";
   const index = kmpSearch(text, pattern);
-  console.log(index); // 输出：11
+  // console.log(index); // 输出：11

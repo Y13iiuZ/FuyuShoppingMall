@@ -12,13 +12,12 @@ import "./style/goodDetails.scss";
 import BackBtn from "@/encapsulationTemplate/BackBtn";
 const GoodDetails: React.FC = () => {
   const { state } = useLocation();
-  console.log(useLocation());
+  // console.log(useLocation());
   const commentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // 检查评论区域高度是否超过200px，超过则进行平滑滚动
     if (commentRef.current!.scrollHeight > 20) {
-      console.log('jinlaile')
       commentRef.current!.scrollTo({
         top: commentRef.current!.scrollHeight,
         behavior: 'smooth'
@@ -77,11 +76,11 @@ const GoodDetails: React.FC = () => {
       }}>
         <Comment author="Alice" content="这是第一条评论" />
         <Comment author="Bob" content="这是第二条评论" />
-        <Comment author="Bob" content="这是第二条评论" />
-        <Comment author="Bob" content="这是第二条评论" />
-        <Comment author="Bob" content="这是第二条评论" />
-        <Comment author="Bob" content="这是第二条评论" />
-        <Comment author="Bob" content="这是第二条评论" />
+        <Comment author="Coke" content="这是第三条评论" />
+        <Comment author="Taro" content="这是第四条评论" />
+        <Comment author="Electron" content="这是第五条评论" />
+        <Comment author="Fluter" content="这是第六条评论" />
+        <Comment author="React" content="这是第七条评论" />
       </div>
     </div>
     </>

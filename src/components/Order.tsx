@@ -25,14 +25,6 @@ const Order: React.FC = () => {
     { n: "p5", w: 500 },
     { n: "p6", w: 600 },
   ]);
-  useEffect(() => {
-    // const savedName = localStorage.getItem("storeName");
-    // console.log(JSON.parse(savedName!));
-    // if (savedName) {
-    //   setName(JSON.parse(savedName));
-    // }
-    console.log([...orders])
-  }, []);
   return (
     <Watermark content={["张铁曦", "18381037727"]}>
     <BackBtn />

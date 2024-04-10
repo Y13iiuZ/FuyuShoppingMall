@@ -1,36 +1,66 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { CommentOutlined, CustomerServiceOutlined,QuestionCircleOutlined,BranchesOutlined } from "@ant-design/icons";
+import SearchBtn from "@/encapsulationTemplate/SearchBtn";
+import {
+  CommentOutlined,
+  CustomerServiceOutlined,
+  QuestionCircleOutlined,
+  BranchesOutlined,
+} from "@ant-design/icons";
 import { FloatButton } from "antd";
 import Goods from "./Goods";
 import axios from "axios";
 import BackBtn from "@/encapsulationTemplate/BackBtn";
 import "./style/login.scss";
-import { count } from "console";
+import FuzzyQuery from "@/algorithm/FuzzyQuery";
+
 const Login: React.FC = () => {
   const [goodsData, setGoodsData] = useState<string[]>();
+  const searchRef = useRef<HTMLInputElement>(null);
+  const dataRef = useRef()
   const requestAPI = () => {
     axios
       .get("http://localhost:3000/users")
       .then((res) => {
-        console.log(res);
-        setGoodsData((pre) => (pre = res.data.result));
+        setGoodsData(res.data.result);
+        dataRef.current = res.data.result;
       })
       .catch((error: string) => {
-        console.log(error);
+        throw new Error(error);
       });
+  };
+
+  const onHandleChildClick = () => {
+    const datas = JSON.parse(JSON.stringify(dataRef.current) || JSON.stringify(goodsData) || "");
+    const result = [] as string[];
+    datas.map((item: any) => {
+      if (item.name) result.push(item.name);
+    });
+    const searchResult = FuzzyQuery.fuzzyQuery(searchRef.current?.value, result);
+    const refreshShow = datas.filter((item:any) => searchResult.includes(item.name));
+    setGoodsData((pre) => (pre = refreshShow));
   };
   useEffect(() => {
     requestAPI();
   }, []);
 
+  useEffect(()=>{
+    localStorage.setItem("searchGoods", JSON.stringify(goodsData));
+  },[goodsData])
+
   return (
     <div>
       <BackBtn />
-      <div style={{ height: "auto" }}>
+      <div
+        style={{
+          height: "auto",
+          display: "flex",
+          justifyContent: "space-between",
+        }}>
         <Link to={"list/1"}>
           <button className="viewNotice">VIEW NOTICE</button>
         </Link>
+        <SearchBtn ref={searchRef!} onChildClick={onHandleChildClick} />
       </div>
       <Outlet />
       <FloatButton.Group
@@ -52,8 +82,16 @@ const Login: React.FC = () => {
           badge={{ dot: true }}
           href="/sMeDo"
         />
-        <FloatButton badge={{ count: 32 }} icon={<QuestionCircleOutlined />} tooltip='FAQs?(32人已问)'/>
-        <FloatButton badge={{ count: 99 }} icon={<BranchesOutlined />} tooltip='作者who?(99人已看)'/>
+        <FloatButton
+          badge={{ count: 32 }}
+          icon={<QuestionCircleOutlined />}
+          tooltip="FAQs?(32人已问)"
+        />
+        <FloatButton
+          badge={{ count: 99 }}
+          icon={<BranchesOutlined />}
+          tooltip="作者who?(99人已看)"
+        />
       </FloatButton.Group>
       <FloatButton.BackTop style={{ bottom: 10 }} />
       <Goods getGoodsListData={goodsData!} />

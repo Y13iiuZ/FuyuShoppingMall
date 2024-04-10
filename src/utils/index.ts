@@ -163,7 +163,17 @@ export const throttle = (fn: any, delay: number) => {
     if (timer) return;
     timer = setTimeout(() => {
       fn.apply(this, args);
-      timer = null;
+      timer = null;  //归位
+    }, delay);
+  };
+};
+
+export const debounce = (fn: any, delay: number) => {
+  let timer: NodeJS.Timeout | null = null;
+  return function (this: any, ...args: any[]) {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn.apply(this, args);
     }, delay);
   };
 };

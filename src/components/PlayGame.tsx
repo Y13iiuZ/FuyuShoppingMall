@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import poetryValue from "../@types/poetryValue";
 import { Button, Alert } from "antd";
 import "./style/playGame.scss";
+import BackBtn from "@/encapsulationTemplate/BackBtn";
 const author: Sc = {
   name: "ztx",
   age: 24,
@@ -50,6 +51,7 @@ const PlayGame: React.FC = () => {
   };
   return (
     <>
+      <BackBtn />
       {!shouldShowElement && (
         <div className="playGame">
           <button className="playBtn" onClick={startPlay}>

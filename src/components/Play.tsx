@@ -115,7 +115,6 @@ const RandomRedEnvelope: React.FC = () => {
   }, []);
   const handleImageClick = (index: number) => {
     const newRandomImages = [...randomImages];
-    console.log(typeof Score);
     setScore(Score[newRandomImages[index] as keyof typeof Score] + score);
     newRandomImages.splice(index, 1);
     setRandomImages(newRandomImages);
