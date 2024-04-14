@@ -2,7 +2,8 @@ import React from "react";
 import { RouteObject } from "react-router-dom";
 const Login = React.lazy(() => import( "../components/Login"));
 const Count = React.lazy(() => import( "../components/Count"));
-const Order = React.lazy(() => import( "../components/Order"));
+// const Order = React.lazy(() => import( "../components/Order"));
+const Order = React.lazy(() => import('../encapsulationTemplate/TabBars'));
 const List = React.lazy(() => import( "../components/List"));
 const ListTwo = React.lazy(() => import( "../components/ListTwo"));
 const ListThree = React.lazy(() => import( "../components/ListThree"));
@@ -17,6 +18,7 @@ const WantMeDo = React.lazy(() => import("@/components/WantMeDo"));
 const UserLogin = React.lazy(() => import("../components/UserLogin"));
 const UserRegist = React.lazy(() => import("../components/UserRegist"));
 const GameAll = React.lazy(() => import("../components/GameAll"));
+const UserSetting = React.lazy(() => import("../components/UserSetting"));
 const routes: RouteObject[] = [
   {
     path: "/",
@@ -33,6 +35,10 @@ const routes: RouteObject[] = [
   {
     path: "/order",
     element: <Order />,
+  },
+  {
+    path: "/userSetting",
+    element: <UserSetting />,
   },
   {
     path: "/login",

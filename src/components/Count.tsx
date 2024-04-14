@@ -2,6 +2,7 @@ import React, { useState,useEffect } from "react";
 import { Button, Card, Flex, Typography, Watermark } from "antd";
 import store from "../store/CartStore";
 import { observer } from "mobx-react-lite";
+import { PlusCircleOutlined, MinusCircleOutlined } from "@ant-design/icons";
 import BackBtn from "@/encapsulationTemplate/BackBtn";
 import { randomDrawing } from "../utils";
 
@@ -57,9 +58,11 @@ const Counter: React.FC = () => {
               <Typography.Title level={3}>
                 {`您添加的商品是:${item ? item : "暂无"}`}
               </Typography.Title>
+              <PlusCircleOutlined />
               <Button type="text">
-                当前购买量级:{getLuckyPerson.n}
+                当前购买数量为:{getLuckyPerson.n}
               </Button>
+              <MinusCircleOutlined />
             </Flex>
           </Flex>
         </Card>)})}

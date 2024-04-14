@@ -11,6 +11,7 @@ import { FloatButton } from "antd";
 import Goods from "./Goods";
 import axios from "axios";
 import BackBtn from "@/encapsulationTemplate/BackBtn";
+import UserAvatar from "@/encapsulationTemplate/UserAvatar";
 import "./style/login.scss";
 import FuzzyQuery from "@/algorithm/FuzzyQuery";
 
@@ -50,7 +51,8 @@ const Login: React.FC = () => {
 
   return (
     <div>
-      <BackBtn />
+      <div style={{display:'flex',justifyContent:'space-between'}}><BackBtn />
+      <UserAvatar /></div>
       <div
         style={{
           height: "auto",
