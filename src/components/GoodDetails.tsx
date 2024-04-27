@@ -80,7 +80,7 @@ const GoodDetails: React.FC = () => {
       }}>
         <Comment author="Alice" content="这是第一条评论" />
       </div>
-      {isShowComment && <ShowCommentBox />}
+      {isShowComment && <ShowCommentBox closeBack={() => setIsShowComment(false)}/>}
     </div>
     </>
   );

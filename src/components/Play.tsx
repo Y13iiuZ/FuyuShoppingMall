@@ -168,6 +168,10 @@ const Play: React.FC = () => {
     setTimeout(()=>{
       setLoading(false);
     },500)
+    setTimeout(()=>{
+      setPlaying(false);
+      window.location.reload();
+    },15000)
   }
   return (
     <div className="redLottie">
@@ -203,7 +207,7 @@ const Play: React.FC = () => {
       </div>
       {startPlay && (
         <>
-          <GetMousePosition />
+          {/* <GetMousePosition /> */}
           <ReadLottie />
           <button className="readLottiePlayBtn" onClick={playingGames}>{btnName.name}</button>
         </>

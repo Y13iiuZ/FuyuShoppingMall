@@ -4,7 +4,7 @@ import './templateStyle/likeBtn.scss';
 export default function LikeBtn() {
     const [like,setLike] = useState(false)
     const handleClick = () => {
-      message.success(`${like ? '取消收藏' : '已收藏'}`, 1);
+      message.success(`${like ? '取消收藏' : '收藏成功'}`, 1);
       setLike(!like)
     }
   return (

@@ -2,7 +2,11 @@ import React, { ChangeEvent,useRef } from "react";
 import "./templateStyle/showCommentBox.scss";
 import store from "../store/CartStore";
 import { observer } from "mobx-react-lite";
-const ShowCommentBox: React.FC = () => {
+
+interface CloseFnProps {
+  closeBack: () => void;
+}
+const ShowCommentBox: React.FC<CloseFnProps> = ({closeBack}) => {
 //   const [commentInfo, setCommentInfo] = React.useState({
 //     author: "",
 //     content: "",
@@ -22,6 +26,7 @@ const infoRef = useRef({});
         content: e.target[1].value,
     }
     addComments(infoRef.current);
+    closeBack();
   };
   return (
     <>
