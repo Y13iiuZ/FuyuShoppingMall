@@ -1,5 +1,5 @@
 import React,{useRef,useEffect,useState} from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Navigate, useNavigate } from "react-router-dom";
 import Like from "./Like";
 import Mock from "mockjs";
 const productId = Mock.mock("@guid");
@@ -13,11 +13,20 @@ import BackBtn from "@/encapsulationTemplate/BackBtn";
 import ShowCommentBox from "@/encapsulationTemplate/ShowCommentBox";
 const GoodDetails: React.FC = () => {
   const { state } = useLocation();
+  const navigate = useNavigate();
   // console.log(useLocation());
   const commentRef = useRef<HTMLDivElement>(null);
   const [isShowComment, setIsShowComment] = useState(false);
+  const checkLogin = () => !!localStorage.getItem("isLogin") || false;
   const handleCommentClick = () => {
     setIsShowComment(!isShowComment);
+  }
+
+  const checkIsLogining = (e:any) => {
+    if(!checkLogin()){
+      e.preventDefault();
+      navigate("/UserLogin");
+    }
   }
   useEffect(() => {
     // 检查评论区域高度是否超过200px，超过则进行平滑滚动

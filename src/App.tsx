@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { NavLink, Navigate, Link } from "react-router-dom";
+import { NavLink, Navigate, Link, useNavigate } from "react-router-dom";
 import { TrademarkCircleOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { throttle } from "./utils";
@@ -19,24 +19,26 @@ const App: React.FC = () => {
   });
   const driverInstance = JSON.parse(localStorage.getItem("steps")!) || false;
 
-  // const requestAPI = useCallback(() => {
-  //   axios
-  //     .get("/api1/simpleWeather/query", {
-  //       params: {
-  //         key: "1394c395ddd171dbd80b194cd636bc1f",
-  //         city: "成都",
-  //       },
-  //     })
-  //     .then((res) => {
-  //       console.log(res.data.result.realtime);
-  //       const { temperature, info, humidity, power, aqi, direct } =
-  //         res.data.result.realtime;
-  //       setWeatherData({ temperature, info, humidity, power, aqi, direct });
-  //     })
-  //     .catch((error: string) => {
-  //       throw new Error(error);
-  //     });
-  // }, []);
+  const navigate = useNavigate();
+
+  const requestAPI = useCallback(() => {
+    axios
+      .get("/api1/simpleWeather/query", {
+        params: {
+          key: "1394c395ddd171dbd80b194cd636bc1f",
+          city: "成都",
+        },
+      })
+      .then((res) => {
+        console.log(res.data.result.realtime);
+        const { temperature, info, humidity, power, aqi, direct } =
+          res.data.result.realtime;
+        setWeatherData({ temperature, info, humidity, power, aqi, direct });
+      })
+      .catch((error: string) => {
+        throw new Error(error);
+      });
+  }, []);
 
   const checkLogin = () => !!localStorage.getItem("isLogin") || false;
 
@@ -105,8 +107,15 @@ const App: React.FC = () => {
     }
   };
 
+  const checkIsLogining = (e:any) => {
+    if(!checkLogin()){
+      e.preventDefault();
+      navigate("/UserLogin");
+    }
+  }
+
   useEffect(() => {
-    // requestAPI();
+    requestAPI();
     if (!driverInstance) stepsProgress();
     window.addEventListener("scroll", throttle(imageLazyLoad, 500));
     return () => {
@@ -115,7 +124,7 @@ const App: React.FC = () => {
   }, []);
   return (
     <>
-      {!checkLogin() && <Navigate to="/UserLogin" />}
+      {/* {!checkLogin() && <Navigate to="/UserLogin" />} */}
       <div className="App">
         <header className="head">
           <nav className="navbar">
@@ -139,7 +148,7 @@ const App: React.FC = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/count" className="active">
+                <NavLink to="/count" className="active" onClick={checkIsLogining}>
                   购物车
                 </NavLink>
               </li>
@@ -149,7 +158,7 @@ const App: React.FC = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to="/order" className="active">
+                <NavLink to="/order" className="active" onClick={checkIsLogining}>
                   订单
                 </NavLink>
               </li>
@@ -157,7 +166,7 @@ const App: React.FC = () => {
                 <NavLink
                   to="/fpGameAll"
                   className="active"
-                  title="商城不只是购物哟~">
+                  title="商城不只是购物哟~" onClick={checkIsLogining}>
                   富玩
                 </NavLink>
               </li>

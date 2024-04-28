@@ -11,6 +11,9 @@ dependencies:
   '@babel/core':
     specifier: ^7.16.0
     version: 7.23.2
+  '@garfish/bridge-react':
+    specifier: ^1.17.6
+    version: 1.17.6(react-dom@18.2.0)(react@18.2.0)
   '@pmmmwh/react-refresh-webpack-plugin':
     specifier: ^0.5.3
     version: 0.5.11(react-refresh@0.11.0)(webpack-dev-server@4.15.1)(webpack@5.89.0)
@@ -98,6 +101,9 @@ dependencies:
   fs-extra:
     specifier: ^10.0.0
     version: 10.1.0
+  garfish:
+    specifier: ^1.17.6
+    version: 1.17.6
   html-webpack-plugin:
     specifier: ^5.5.0
     version: 5.5.3(webpack@5.89.0)
@@ -259,6 +265,10 @@ packages:
 
   /@adobe/css-tools@4.3.1:
     resolution: {integrity: sha512-/62yikz7NLScCGAAST5SHdnjaDJQBDq0M2muyRTpf2VQhw6StBg2ALiu73zSJQ4fMVLA+0uBhBHAle7Wg+2kSg==}
+    dev: false
+
+  /@alioth-org/es-module-lexer@1.1.0:
+    resolution: {integrity: sha512-2GrWjl8Whptm2Za2Zx+z8dm8Dz62hLWy1KPYEyplil4m28c6OR900iHNrYAYXS9QFCO1tqMABrl1daj6Mt66QQ==}
     dev: false
 
   /@alloc/quick-lru@5.2.0:
@@ -1979,6 +1989,85 @@ packages:
   /@eslint/js@8.51.0:
     resolution: {integrity: sha512-HxjQ8Qn+4SI3/AFv6sOrDB+g6PpUTDwSJiQqOrnneEk8L71161srI9gjzzZvYVbzHiVg/BvcH95+cK/zfIt4pg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  /@garfish/bridge-react@1.17.6(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-VepBzFcPAKrwjBp6utnVAckepXtwPN1s1AmY+YMqQAVzJH/siX+Q+chk8Ua3TYCHwo1zQy/Z5T09XSG0JXx7oA==}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@garfish/utils': 1.17.6
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@garfish/browser-snapshot@1.17.6:
+    resolution: {integrity: sha512-hEU3LDZ7AGKZKaSe7OG8ViOWdooGsRnwss0p7P4w9BI0MEAD3avBkw7tDEmG2POMOBRo/hkRWRnVJdajKJ+yXg==}
+    dependencies:
+      '@garfish/core': 1.17.6
+      '@garfish/utils': 1.17.6
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@garfish/browser-vm@1.17.6:
+    resolution: {integrity: sha512-01ZTn5dixvQdBJseyi6EQs7ol5SHhX3rSMqKJJXrF/dygypq2BxotbZCuwiolkGfO+G8V7ZYtddC/4Urly5rGQ==}
+    dependencies:
+      '@garfish/core': 1.17.6
+      '@garfish/hooks': 1.17.6
+      '@garfish/loader': 1.17.6
+      '@garfish/utils': 1.17.6
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@garfish/core@1.17.6:
+    resolution: {integrity: sha512-0pe4Y5nlWvfRAsN+hGryyuLGkRO2eR7SOsWWztwdRJNdyhqWSNpnfcJnavXwHm2LBFEXugn8kCbXwWlVZsqv7Q==}
+    dependencies:
+      '@alioth-org/es-module-lexer': 1.1.0
+      '@garfish/hooks': 1.17.6
+      '@garfish/loader': 1.17.6
+      '@garfish/utils': 1.17.6
+      eventemitter2: 6.4.9
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@garfish/hooks@1.17.6:
+    resolution: {integrity: sha512-ojvSQL/eJvfcqRejxIDJGfGEcQRpDipRiloZxLwY2zrFh6fAfEz5box4W9S8AjXYry6KO4pIrdrHgNsInEtGHA==}
+    dependencies:
+      '@garfish/utils': 1.17.6
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@garfish/loader@1.17.6:
+    resolution: {integrity: sha512-JS2wEa0497AisM5JZx3gP387Uw9IlmAsgd/a/LGSf/stRPqD8hYGG6T6miIh83zFydF2rZJZdnwfONVP0o/41w==}
+    dependencies:
+      '@garfish/hooks': 1.17.6
+      '@garfish/utils': 1.17.6
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@garfish/router@1.17.6:
+    resolution: {integrity: sha512-OrvQVgMhrjGFH2Hajv/h2SnA98o6ezgLP9uf3OXuo8mzVie+KFG1pNbChfMOSGAXxGTdUO+EV2cdCUReAuARXQ==}
+    dependencies:
+      '@garfish/core': 1.17.6
+      '@garfish/utils': 1.17.6
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@garfish/utils@1.17.6:
+    resolution: {integrity: sha512-wFaD7AqR1rQ6XXH4UmRgW9d9FCzQHXWdOPwQpE5skPG0dmR19jmDTOq10o9cWIdBRmAlnbaJNdHmqjGyqoamgw==}
+    dependencies:
+      debug: 4.3.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /@humanwhocodes/config-array@0.11.11:
     resolution: {integrity: sha512-N2brEuAadi0CcdeMXUkhbZB84eskAc8MEX1By6qEchoVywSgXPIjou4rYsl0V3Hj0ZnuGycGCjdNgockbzeWNA==}
@@ -5570,6 +5659,10 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
+  /eventemitter2@6.4.9:
+    resolution: {integrity: sha512-JEPTiaOt9f04oa6NOkc4aH+nVp5I3wEjpHbIPqfgCdD5v5bUzy7xQqwcVO2aDQgOWhI28da57HksMrzK9HlRxg==}
+    dev: false
+
   /eventemitter3@4.0.7:
     resolution: {integrity: sha512-8guHBZCwKnFhYdHr2ysuRWErTwhoN2X8XELRlrRwpmfeY2jjuUN4taQMsULKUVo1K4DvZl+0pgfyoysHxvmvEw==}
 
@@ -5900,6 +5993,18 @@ packages:
 
   /functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
+
+  /garfish@1.17.6:
+    resolution: {integrity: sha512-05zvuy5JTLDbcurnEDcsQQC+27CLJfWMI/U/B7EdL62n0kcyjdBw4Qd2kMryyCOEJPVq7bqPI1Az3sDKk8k22w==}
+    dependencies:
+      '@garfish/browser-snapshot': 1.17.6
+      '@garfish/browser-vm': 1.17.6
+      '@garfish/core': 1.17.6
+      '@garfish/router': 1.17.6
+      '@garfish/utils': 1.17.6
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /gensync@1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}

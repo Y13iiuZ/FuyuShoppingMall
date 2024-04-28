@@ -1,9 +1,17 @@
 import './templateStyle/commentBtn.scss'
+import {useNavigate} from "react-router-dom";
 interface Props {
   addCmoment: () => void
 }
 export default function commentBtn(props:Props) {
-  const handleClick = () => {
+  const navigate = useNavigate();
+  const checkLogin = () => !!localStorage.getItem("isLogin") || false;
+  const handleClick = (e:any) => {
+    if(!checkLogin()){
+      e.preventDefault();
+      navigate("/UserLogin");
+      return;
+    }
     props.addCmoment();
   }
   return (

@@ -1,9 +1,17 @@
 import { useState } from 'react';
 import { message } from 'antd';
+import {useNavigate} from "react-router-dom";
 import './templateStyle/likeBtn.scss';
 export default function LikeBtn() {
     const [like,setLike] = useState(false)
-    const handleClick = () => {
+    const navigate = useNavigate();
+    const checkLogin = () => !!localStorage.getItem("isLogin") || false;
+    const handleClick = (e:any) => {
+      if(!checkLogin()){
+        e.preventDefault();
+        navigate("/UserLogin");
+        return ;
+      }
       message.success(`${like ? '取消收藏' : '收藏成功'}`, 1);
       setLike(!like)
     }

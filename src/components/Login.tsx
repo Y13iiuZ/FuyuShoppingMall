@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, Navigate, useNavigate } from "react-router-dom";
 import SearchBtn from "@/encapsulationTemplate/SearchBtn";
 import {
   CommentOutlined,
@@ -18,7 +18,9 @@ import FuzzyQuery from "@/algorithm/FuzzyQuery";
 const Login: React.FC = () => {
   const [goodsData, setGoodsData] = useState<string[]>();
   const searchRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
   const dataRef = useRef()
+  const checkLogin = () => !!localStorage.getItem("isLogin") || false;
   const requestAPI = () => {
     axios
       .get("http://localhost:3000/users")
@@ -30,6 +32,13 @@ const Login: React.FC = () => {
         throw new Error(error);
       });
   };
+
+  const checkIsLogining = (e:any) => {
+    if(!checkLogin()){
+      e.preventDefault();
+      navigate("/UserLogin");
+    }
+  }
 
   const onHandleChildClick = () => {
     const datas = JSON.parse(JSON.stringify(dataRef.current) || JSON.stringify(goodsData) || "");
@@ -51,8 +60,10 @@ const Login: React.FC = () => {
 
   return (
     <div>
-      <div style={{display:'flex',justifyContent:'space-between'}}><BackBtn />
-      <UserAvatar /></div>
+      <div style={{display:'flex',justifyContent:'space-between'}}>
+        <BackBtn />
+        <UserAvatar isClick={checkIsLogining}/>
+      </div>
       <div
         style={{
           height: "auto",

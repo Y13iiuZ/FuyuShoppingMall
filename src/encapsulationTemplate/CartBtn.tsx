@@ -1,6 +1,7 @@
 import "./templateStyle/cartBtn.scss";
 import store from "../store/CartStore";
 import { observer } from "mobx-react-lite";
+import {useNavigate} from "react-router-dom";
 import { message } from 'antd';
 
 interface CartBtnProps {
@@ -8,10 +9,17 @@ interface CartBtnProps {
 }
 
 const CartBtn: React.FC<CartBtnProps> = (props) => {
+  const navigate = useNavigate();
+  const checkLogin = () => !!localStorage.getItem("isLogin") || false;
   const {
     changeName
   } = store;
-  const handleCartClick = () => {
+  const handleCartClick = (e:any) => {
+    if(!checkLogin()){
+      e.preventDefault();
+      navigate("/UserLogin");
+      return;
+    }
     changeName(props.names);
     message.success('加入购物车成功',1);
   };

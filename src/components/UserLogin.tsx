@@ -8,7 +8,7 @@ import {
   EyeTwoTone,
   UnlockOutlined,
 } from "@ant-design/icons";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, Form, Input, message } from "antd";
 import "./style/UserLogin.scss";
 
 type FieldType = {
@@ -76,10 +76,13 @@ const UserLogin: React.FC = () => {
       navigate("/");
       return token;
     } else {
-      console.log("去注册");
-      navigate("/UserRegist");
+      message.error('用户名或密码错误', 1);
     }
   };
+
+  const handleRegist = () => {
+    navigate("/UserRegist");
+  }
 
   const generateToken = (): string => {
     const characters =
@@ -127,7 +130,7 @@ const UserLogin: React.FC = () => {
             label="Username"
             name="username"
             rules={[{ required: true, message: "请输入你的用户名!" }]}>
-            <Input prefix={<UserOutlined />} placeholder="请输入你的用户名!" />
+            <Input prefix={<UserOutlined />} placeholder="请输入你的用户名!" allowClear/>
           </Form.Item>
 
           <Form.Item<FieldType>
@@ -144,6 +147,7 @@ const UserLogin: React.FC = () => {
                 visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
               }
               placeholder="请输入你的密码!"
+              allowClear
             />
           </Form.Item>
 
@@ -157,6 +161,9 @@ const UserLogin: React.FC = () => {
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
             <Button type="primary" htmlType="submit">
               登录
+            </Button>
+            <Button type="primary" onClick={handleRegist}>
+              注册
             </Button>
           </Form.Item>
         </Form>

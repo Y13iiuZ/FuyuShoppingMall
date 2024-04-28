@@ -1,7 +1,7 @@
 import "./templateStyle/payBtn.scss";
 import store from "../store/CartStore";
 import { observer } from "mobx-react-lite";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 interface OrderBtnProps {
   order: any;
@@ -10,7 +10,13 @@ interface OrderBtnProps {
 const PayBtn: React.FC<OrderBtnProps> = (props) => {
   const { addOrder } = store;
   const navigate = useNavigate();
-  const handleOrderClick = () => {
+  const checkLogin = () => !!localStorage.getItem("isLogin") || false;
+  const handleOrderClick = (e:any) => {
+    if(!checkLogin()){
+      e.preventDefault();
+      navigate("/UserLogin");
+      return ;
+    }
     addOrder(props.order);
     navigate("/order");
   };

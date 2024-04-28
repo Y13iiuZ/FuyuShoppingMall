@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./style/like.scss";
+import {useNavigate} from "react-router-dom";
 import { Input, Tooltip } from "antd";
 
 type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
@@ -17,8 +18,14 @@ const Like: React.FC<PartialObj> = ({ style, like, dislike, key }) => {
   const [dislikes, setDisLikes] = useState<number>(dislike);
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const [disLiked, setDisLiked] = useState<boolean>(false);
-  const handleToggleLike = () => {
-    if (!isLiked && !disLiked) {
+  const navigate = useNavigate();
+  const checkLogin = () => !!localStorage.getItem("isLogin") || false;
+  const handleToggleLike = (e:any) => {
+    if(!checkLogin()){
+      e.preventDefault();
+      navigate("/UserLogin");
+    }
+    else if (!isLiked && !disLiked) {
       setIsLiked(true);
       setLikes(likes + 1);
     } else {
@@ -26,8 +33,12 @@ const Like: React.FC<PartialObj> = ({ style, like, dislike, key }) => {
       setLikes(likes - 1);
     }
   };
-  const handleToggleDisLike = () => {
-    if (!disLiked && !isLiked) {
+  const handleToggleDisLike = (e:any) => {
+    if(!checkLogin()){
+      e.preventDefault();
+      navigate("/UserLogin");
+    }
+    else if (!disLiked && !isLiked) {
       setDisLiked(true);
       setDisLikes(dislikes + 1);
     } else {
